@@ -5,6 +5,8 @@
 #include <sysinfoapi.h>
 #include <math.h>
 
+#include "mem.h"
+
 #define _GNU_SOURCE
 #define SEC_TO_MS CLOCKS_PER_SEC
 
@@ -30,7 +32,7 @@
 #define LOWER_CHAR_FROM_HASH(i) (i + ASCII_LOWER_A)
 #define UPPER_CHAR_FROM_HASH(i) (i + ASCII_UPPER_A)
 
-#define clr_struct( p_var ) memset( (void *)( p_var ), 0, sizeof *( p_var ) )
+#define clr_struct(p_var) memset((void *)(p_var), 0, sizeof *(p_var))
 
 typedef unsigned char       uint8;
 typedef unsigned short int  uint16;
@@ -159,7 +161,7 @@ int get_occurences(char *s, char target, int **arr, int max)
 {
     int i;
     int c = 0;
-    *arr = malloc(max * sizeof(int));
+    *arr = _malloc(max * sizeof(int));
     for (i = 0; s[i] != '\0'; i++)
     {
         if (s[i] == target)
@@ -344,24 +346,12 @@ void clear_ll_arr(long long int *arr, int size)
 char **init_2d_char(int cols, int rows)
 {
     int i;
-    char **arr = malloc(rows * sizeof(char *));
+    char **arr = _malloc(rows * sizeof(char *));
     for (i = 0; i < rows; i++)
     {
-        arr[i] = malloc(cols * sizeof(char));
+        arr[i] = _malloc(cols * sizeof(char));
     }
     return arr;
-}
-
-// Frees a 2D char array
-void free_2d_char(char **arr, int rows)
-{
-    int i;
-
-    for (i = 0; i < rows; i++)
-    {
-        free(arr[i]);
-    }
-    free(arr);
 }
 
 // Hashes a string (e.g. A --> 0, E --> 5, etc.)
@@ -387,7 +377,7 @@ bool str_in_array(const char **arr, int size, char *target)
 // Gets the index of the first occurence in a string
 int find_in_str(const char *s, char target)
 {
-    get_x_occurence(str, target, 1);
+    get_x_occurence(s, target, 1);
 }
 
 // Converts a string to an int, stops at a terminator
@@ -440,7 +430,7 @@ int split_to_int(int *arr, int size, char *str, char delimiter)
         arr[c++] = str_to_int(str + occurences[i] + 1, delimiter);
     }
     arr[c++] = str_to_int(str + occurences[i] + 1, '\n');
-    if (occurences) free(occurences);
+
     return c;
 }
 
@@ -448,7 +438,7 @@ int split_to_int(int *arr, int size, char *str, char delimiter)
 int split_to_int_unknown_size(int **arr, char *str, char delimiter)
 {
     int size = count_occurences(str, delimiter);
-    *arr = malloc((size + 1) * sizeof(int));
+    *arr = _malloc((size + 1) * sizeof(int));
     return split_to_int(*arr, size, str, delimiter);
 }
 
@@ -466,7 +456,6 @@ int split_to_ll(long long int *arr, int size, char *str, char delimiter)
         arr[c++] = str_to_ll(str + occurences[i] + 1, delimiter);
     }
     arr[c++] = str_to_ll(str + occurences[i] + 1, '\n');
-    if (occurences) free(occurences);
     return c;
 }
 
@@ -474,7 +463,7 @@ int split_to_ll(long long int *arr, int size, char *str, char delimiter)
 int split_to_ll_unknown_size(long long int **arr, char *str, char delimiter)
 {
     int size = count_occurences(str, delimiter);
-    *arr = malloc((size + 1) * sizeof(long long int));
+    *arr = _malloc((size + 1) * sizeof(long long int));
     return split_to_ll(*arr, size, str, delimiter);
 }
 
@@ -593,8 +582,8 @@ void merge(int *arr, int l, int m, int r)
     int n2 = r - m;
     int *L, *R;
 
-    L = malloc(n1 * sizeof(int));
-    R = malloc(n2 * sizeof(int));
+    L = _malloc(n1 * sizeof(int));
+    R = _malloc(n2 * sizeof(int));
 
     for (i = 0; i < n1; i++)
     {
@@ -636,9 +625,6 @@ void merge(int *arr, int l, int m, int r)
         j++;
         k++;
     }
-
-    free(L);
-    free(R);
 }
 
 //Sorts two int arrays

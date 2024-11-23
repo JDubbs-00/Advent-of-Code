@@ -57,7 +57,9 @@ int main(int argc, char *argv[])
 
     fclose(fp);
     if (line) free(line);
+    emancipation_proclamation();
     print_time(start, GetTickCount64());
+    print_malloced_mem();
     print_results("", res);
 }
 """)

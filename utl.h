@@ -46,36 +46,43 @@ enum {
     DIRECTION_ALL
 };
 
+// Is number?
 bool is_num(char c)
 {
     return c >= ASCII_0 && c <= ASCII_9;
 }
 
+// Is uppercase character?
 bool is_uppercase(char c)
 {
     return c >= ASCII_UPPER_A && c <= ASCII_UPPER_Z;
 }
 
+// Is lowercase character?
 bool is_lowercase(char c)
 {
     return c >= ASCII_LOWER_A && c <= ASCII_LOWER_Z;
 }
 
+// Is string empty?
 bool is_empty_str(char *s)
 {
     return s[0] == '\0';
 }
 
+// Is (x, y) pair within bounds of a grid?
 bool is_inbounds(int rows, int cols, int r, int c)
 {
     return r >= 0 && r < rows && c >= 0 && c < cols;
 }
 
+// Are two strings equal?
 bool str_equals(const char *s1, const char *s2)
 {
     return strcmp(s1, s2) == 0;
 }
 
+// Are two strings equal up to a given length?
 bool str_equals_length(const char *s1, const char *s2, int length)
 {
     for (int i = 0; i < length; i++)
@@ -89,6 +96,7 @@ bool str_equals_length(const char *s1, const char *s2, int length)
     return true;
 }
 
+// Does a target character exist within a string? 
 bool is_in_str(const char *s, char target)
 {
     for (int i = 0; s[i] != '\0'; i++)
@@ -101,6 +109,7 @@ bool is_in_str(const char *s, char target)
     return false;
 }
 
+// Does a target int exist within an array?
 bool is_in_int_arr(int *arr, int size, int target)
 {
     for (int i = 0; i < size; i++)
@@ -110,6 +119,7 @@ bool is_in_int_arr(int *arr, int size, int target)
     return false;
 }
 
+// Does a target large int exist within an array?
 bool is_in_ll_arr(long long int *arr, int size, long long int target)
 {
     for (int i = 0; i < size; i++)
@@ -119,6 +129,7 @@ bool is_in_ll_arr(long long int *arr, int size, long long int target)
     return false;
 }
 
+// Count the number of occurences in a hash
 int count_hash(bool *arr, int size)
 {
     int i, sum;
@@ -129,6 +140,7 @@ int count_hash(bool *arr, int size)
     return sum;
 }
 
+// Gets the index of the nth occurence of a character within a string
 int get_x_occurence(char *s, char target, int x)
 {
     for (int i = 0; s[i] != '\0'; i++)
@@ -142,6 +154,7 @@ int get_x_occurence(char *s, char target, int x)
     return -1;
 }
 
+// Gets the indices of occurences of a character within a string
 int get_occurences(char *s, char target, int **arr, int max)
 {
     int i;
@@ -158,6 +171,7 @@ int get_occurences(char *s, char target, int **arr, int max)
     return c;
 }
 
+// Counts the occurences of a characer within a string
 int count_occurences(char *s, char target)
 {
     int i;
@@ -173,6 +187,7 @@ int count_occurences(char *s, char target)
     return c;
 }
 
+// Counts the occurences of an int within an array
 int count_occurences_int(int *arr, int size, int target)
 {
     int i;
@@ -188,6 +203,7 @@ int count_occurences_int(int *arr, int size, int target)
     return c;
 }
 
+// Gets the minimum large int value in an array
 long long int get_min_ll(long long int *arr, int size)
 {
     long long int min = arr[0];
@@ -198,6 +214,7 @@ long long int get_min_ll(long long int *arr, int size)
     return min;
 }
 
+// Gets the maximum large int value in an array
 long long int get_max_ll(long long int *arr, int size)
 {
     long long int max = arr[0];
@@ -208,6 +225,7 @@ long long int get_max_ll(long long int *arr, int size)
     return max;
 }
 
+// Gets the minimum int value in an array
 int get_min(int *arr, int size)
 {
     int min = arr[0];
@@ -218,6 +236,7 @@ int get_min(int *arr, int size)
     return min;
 }
 
+// Gets the maximum int value in an array
 int get_max(int *arr, int size)
 {
     int max = arr[0];
@@ -228,6 +247,7 @@ int get_max(int *arr, int size)
     return max;
 }
 
+// Gets the index of the first occurence of a target int within an array
 int search_int(int *arr, int size, int target)
 {
     for (int i = 0; i < size; i++)
@@ -240,6 +260,7 @@ int search_int(int *arr, int size, int target)
     return -1;
 }
 
+// Gets the index of the last occurence of a target int within an array
 int search_int_rev(int *arr, int size, int target)
 {
     for (int i = size - 1; i >= 0; i--)
@@ -252,6 +273,7 @@ int search_int_rev(int *arr, int size, int target)
     return -1;
 }
 
+// Gets the index of the first occurence of a target large int within an array
 int search_ll(long long int *arr, int size, long long int target)
 {
     for (int i = 0; i < size; i++)
@@ -264,13 +286,15 @@ int search_ll(long long int *arr, int size, long long int target)
     return -1;
 }
 
+// Copies a string
 void copy_str(char *from, char *to, int amount)
 {
     memcpy(to, from, amount * sizeof(char));
     to[amount] = '\0';
 }
 
-void copy_str_terminator(char *from, char *to, char terminator)
+// Copies a string, stops at a given terminator 
+void copy_str_terminator(const char *from, char *to, char terminator)
 {
     int i;
     for (i = 0; from[i] != terminator && from[i] != '\0'; i++)
@@ -280,6 +304,7 @@ void copy_str_terminator(char *from, char *to, char terminator)
     to[i] = '\0';
 }
 
+// Copies a string, stops at given terminators
 char copy_str_terminators(char *from, char *to, const char *terminators)
 {
     int i, j;
@@ -291,26 +316,31 @@ char copy_str_terminators(char *from, char *to, const char *terminators)
     return from[i];
 }
 
+// Copies an int array
 void copy_int_array(int *from, int *to, int size)
 {
     memcpy(to, from, size * sizeof(int));
 }
 
+// Clears a boolean array
 void clear_bool_arr(bool *arr, int size)
 {
     memset(arr, 0, size * sizeof(bool));
 }
 
+// Clears an int array
 void clear_int_arr(int *arr, int size)
 {
     memset(arr, 0, size * sizeof(int));
 }
 
+// Clears a large int array
 void clear_ll_arr(long long int *arr, int size)
 {
     memset(arr, 0, size * sizeof(long long int));
 }
 
+// Initializes a 2D character array (or an array of strings)
 char **init_2d_char(int cols, int rows)
 {
     int i;
@@ -322,6 +352,7 @@ char **init_2d_char(int cols, int rows)
     return arr;
 }
 
+// Frees a 2D char array
 void free_2d_char(char **arr, int rows)
 {
     int i;
@@ -333,6 +364,7 @@ void free_2d_char(char **arr, int rows)
     free(arr);
 }
 
+// Hashes a string (e.g. A --> 0, E --> 5, etc.)
 void hash_str(char *s, int *hash)
 {
     memset(hash, 0, ALPHABET_SIZE * sizeof(int));
@@ -342,6 +374,7 @@ void hash_str(char *s, int *hash)
     }
 }
 
+// Does string exist in array?
 bool str_in_array(const char **arr, int size, char *target)
 {
     for (int i = 0; i < size; i++)
@@ -351,18 +384,13 @@ bool str_in_array(const char **arr, int size, char *target)
     return false;
 }
 
+// Gets the index of the first occurence in a string
 int find_in_str(const char *s, char target)
 {
-    for (int i = 0; s[i] != '\0'; i++)
-    {
-        if (s[i] == target)
-        {
-            return i;
-        }
-    }
-    return -1;
+    get_x_occurence(str, target, 1);
 }
 
+// Converts a string to an int, stops at a terminator
 int str_to_int(char *s, char end)
 {
     char temp[MAX_DIGITS + 1];
@@ -376,6 +404,7 @@ int str_to_int(char *s, char end)
     return atoi(temp);
 }
 
+// Converts a string to a large int, stops at a terminator
 long long int str_to_ll(char *s, char end)
 {
     char temp[MAX_DIGITS_LL + 1];
@@ -389,6 +418,7 @@ long long int str_to_ll(char *s, char end)
     return atoll(temp);
 }
 
+// Gets the length of a string
 int str_length(char *s)
 {
     int c = 0;
@@ -396,6 +426,7 @@ int str_length(char *s)
     return c;
 }
 
+// Splits a string to an array of ints given a delimiter
 int split_to_int(int *arr, int size, char *str, char delimiter)
 {
     int i;
@@ -413,6 +444,7 @@ int split_to_int(int *arr, int size, char *str, char delimiter)
     return c;
 }
 
+// Splits a string to an array of ints given a delimiter when the number of separate values is unknown
 int split_to_int_unknown_size(int **arr, char *str, char delimiter)
 {
     int size = count_occurences(str, delimiter);
@@ -420,6 +452,7 @@ int split_to_int_unknown_size(int **arr, char *str, char delimiter)
     return split_to_int(*arr, size, str, delimiter);
 }
 
+// Splits a string to an array of large ints given a delimiter
 int split_to_ll(long long int *arr, int size, char *str, char delimiter)
 {
     int i;
@@ -437,6 +470,7 @@ int split_to_ll(long long int *arr, int size, char *str, char delimiter)
     return c;
 }
 
+// Splits a string to an array of large ints given a delimiter when the number of separate values is unknown
 int split_to_ll_unknown_size(long long int **arr, char *str, char delimiter)
 {
     int size = count_occurences(str, delimiter);
@@ -444,6 +478,7 @@ int split_to_ll_unknown_size(long long int **arr, char *str, char delimiter)
     return split_to_ll(*arr, size, str, delimiter);
 }
 
+// Shifts all characters in a string from a starting index to the left
 void shift_left(char *s, int index)
 {
     for (int i = index; s[i] != '\0'; i++)
@@ -452,6 +487,7 @@ void shift_left(char *s, int index)
     }
 }
 
+// Removes duplicate delimiters next to each other in a string
 void remove_extra_delimiters(char *s, char delimiter)
 {
     for(int i = 0; s[i] != '\0'; i++)
@@ -464,6 +500,7 @@ void remove_extra_delimiters(char *s, char delimiter)
     }
 }
 
+// Removes all occurences of a character in a string
 void remove_char(char *s, char target)
 {
     for(int i = 0; s[i] != '\0'; i++)
@@ -476,12 +513,14 @@ void remove_char(char *s, char target)
     }
 }
 
+// Removes unwanted characters when copy/pasting from a text file
 void clean_input(char *s)
 {
     remove_char(s, '\n');
     remove_char(s, CR);
 }
 
+// Gets the greatest common denominator of two values
 long long int gcd(long long int a, long long int b)
 {
     if (b == 0)
@@ -492,12 +531,13 @@ long long int gcd(long long int a, long long int b)
     return gcd(b, a % b);
 }
 
-
+// Gets the least common multiple of two values
 long long int lcm(long long int a, long long int b)
 {
     return (a / gcd(a, b)) * b;
 }
 
+// Prints the amount of time between two time stamps
 void print_time(long long int start, long long int end)
 {
     double total_time = (end - start) * 1e-3;
@@ -509,6 +549,7 @@ void print_time(long long int start, long long int end)
     printf("Total runtime: %dm %ds %dms\n", min, sec, ms);
 }
 
+// Outputs an int array
 void print_int_arr(int *arr, int size)
 {
     int i;
@@ -519,6 +560,7 @@ void print_int_arr(int *arr, int size)
     printf("%d\n", arr[i]);
 }
 
+// Outputs a large int array
 void print_ll_arr(long long int *arr, int size)
 {
     int i;
@@ -529,6 +571,7 @@ void print_ll_arr(long long int *arr, int size)
     printf("%lld\n", arr[i]);
 }
 
+// Outputs a string array
 void print_2d_char_arr(char **arr, int rows, int cols)
 {
     int i, j;
@@ -542,6 +585,7 @@ void print_2d_char_arr(char **arr, int rows, int cols)
     }
 }
 
+// Merges two int arrays, utility for sorting algorithm
 void merge(int *arr, int l, int m, int r)
 {
     int i, j, k;
@@ -597,6 +641,7 @@ void merge(int *arr, int l, int m, int r)
     free(R);
 }
 
+//Sorts two int arrays
 void merge_sort(int *arr, int l, int r)
 {
     if (l < r)
@@ -610,16 +655,19 @@ void merge_sort(int *arr, int l, int r)
     }
 }
 
+// Gets the distance between two points in a grid-like path
 int manhattan_dist(int x, int y)
 {
     return ABS(x) + ABS(y);
 }
 
+// Converts degrees to radians
 double degree_to_radians(double d)
 {
     return (d * (PI / 180));
 }
 
+// TODO
 long long int mul_inv(long long int a, long long int b)
 {
     int t, q;
@@ -630,6 +678,7 @@ long long int mul_inv(long long int a, long long int b)
     {
         return 1;
     }
+    
     while (a > 1)
     {
         q = a / b;
@@ -644,9 +693,11 @@ long long int mul_inv(long long int a, long long int b)
     {
         x1 += b0;
     }
+    
     return x1;
 }
 
+// TODO
 long long int chinese_remainder(int *n, int *a, int len)
 {
     int p, i;
@@ -666,11 +717,13 @@ long long int chinese_remainder(int *n, int *a, int len)
     return sum % prod;
 }
 
+// Prints answers for sweet stars
 void print_results(char *msg, int res)
 {
     printf("%s: %d", msg, res);
 }
 
+// Prints answers for sweet stars
 void print_results_ll(char *msg, long long int res)
 {
     printf("%s: %lld", msg, res);

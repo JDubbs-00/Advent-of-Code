@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -7,8 +9,8 @@
 
 #include "mem.h"
 
-#define _GNU_SOURCE
 #define SEC_TO_MS CLOCKS_PER_SEC
+#define MAX_LINE_LEN 256
 
 #define ABS(n) ((n < 0) ? -(n) : n)
 #define MAX(n1, n2) ((n1 > n2) ? n1 : n2)
@@ -143,7 +145,7 @@ int count_hash(bool *arr, int size)
 }
 
 // Gets the index of the nth occurence of a character within a string
-int get_x_occurence(char *s, char target, int x)
+int get_x_occurence(const char *s, char target, int x)
 {
     for (int i = 0; s[i] != '\0'; i++)
     {
@@ -309,7 +311,7 @@ void copy_str_terminator(const char *from, char *to, char terminator)
 // Copies a string, stops at given terminators
 char copy_str_terminators(char *from, char *to, const char *terminators)
 {
-    int i, j;
+    int i;
     for (i = 0; from[i] != '\0' && !is_in_str(terminators, from[i]); i++)
     {
         to[i] = from[i];
@@ -377,7 +379,7 @@ bool str_in_array(const char **arr, int size, char *target)
 // Gets the index of the first occurence in a string
 int find_in_str(const char *s, char target)
 {
-    get_x_occurence(s, target, 1);
+    return get_x_occurence(s, target, 1);
 }
 
 // Converts a string to an int, stops at a terminator

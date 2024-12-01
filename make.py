@@ -28,9 +28,8 @@ int main(int argc, char *argv[])
 {
     long long int start = GetTickCount64();
     FILE *fp;
-    char *line = NULL;
-    size_t len = 0;
-    int length, res;
+    char *line = _malloc(MAX_LINE_LEN);
+    int res;
 
 """)
     f_day.write("    #ifdef TEST\n")
@@ -47,14 +46,17 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    while ((length = getline(&line, &len, fp)) != -1)
+    
+
+    while ((fgets(line, MAX_LINE_LEN, fp)) != NULL)
     {
         clean_input(line);
         //printf("%s", line);
     }
 
+    
 
-
+    if (ferror(fp)) printf("Error reading file.");
     fclose(fp);
     if (line) free(line);
     emancipation_proclamation();

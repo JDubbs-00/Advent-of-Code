@@ -40,5 +40,5 @@ void emancipation_proclamation()
 
 void print_malloced_mem()
     {
-    printf("Total allocated memory: %zd");
+    printf("Total allocated memory: %zd", total_bytes);
     }

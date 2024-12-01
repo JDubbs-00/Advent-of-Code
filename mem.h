@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h> 
-#include <sysinfoapi.h>
 
 #define MAX_MALLOC_CALLS 100
 
@@ -40,5 +39,5 @@ void emancipation_proclamation()
 
 void print_malloced_mem()
     {
-    printf("Total allocated memory: %zd", total_bytes);
+    printf("Total allocated memory: %zd\n", total_bytes);
     }

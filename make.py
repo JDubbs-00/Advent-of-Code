@@ -26,7 +26,7 @@ for i in range(1, 26):
 
 int main(int argc, char *argv[])
 {
-    long long int start = GetTickCount64();
+    clock_t start = clock();
     FILE *fp;
     char *line = _malloc(MAX_LINE_LEN);
     int res;
@@ -58,9 +58,8 @@ int main(int argc, char *argv[])
 
     if (ferror(fp)) printf("Error reading file.");
     fclose(fp);
-    if (line) free(line);
     emancipation_proclamation();
-    print_time(start, GetTickCount64());
+    print_time(start, clock());
     print_malloced_mem();
     print_results("", res);
 }

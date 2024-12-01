@@ -4,7 +4,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <sysinfoapi.h>
+#include <time.h>
 #include <math.h>
 
 #include "mem.h"
@@ -34,7 +34,7 @@
 #define LOWER_CHAR_FROM_HASH(i) (i + ASCII_LOWER_A)
 #define UPPER_CHAR_FROM_HASH(i) (i + ASCII_UPPER_A)
 
-#define clr_struct(p_var) memset((void *)(p_var), 0, sizeof *(p_var))
+#define clear(p) memset((void *)(p), 0, sizeof *(p))
 
 typedef unsigned char       uint8;
 typedef unsigned short int  uint16;
@@ -529,10 +529,10 @@ long long int lcm(long long int a, long long int b)
 }
 
 // Prints the amount of time between two time stamps
-void print_time(long long int start, long long int end)
+void print_time(clock_t start, clock_t end)
 {
-    double total_time = (end - start) * 1e-3;
-    int ms = (int)(total_time * SEC_TO_MS);
+    double total_time = end - start;
+    int ms = (int)(total_time);
     int sec = ms / 1000;
     ms = ms % 1000;
     int min = sec / 60;

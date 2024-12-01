@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ "$3" = "b" ]; then
     cp -R -u -p "$1/day_$2""a.c" "$1/day_$2$3.c"
 fi

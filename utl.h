@@ -584,8 +584,8 @@ void merge(int *arr, int l, int m, int r)
     int n2 = r - m;
     int *L, *R;
 
-    L = _malloc(n1 * sizeof(int));
-    R = _malloc(n2 * sizeof(int));
+    L = malloc(n1 * sizeof(int));
+    R = malloc(n2 * sizeof(int));
 
     for (i = 0; i < n1; i++)
     {
@@ -627,6 +627,9 @@ void merge(int *arr, int l, int m, int r)
         j++;
         k++;
     }
+
+    free(L);
+    free(R);
 }
 
 //Sorts two int arrays

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h> 
 
-#define MAX_MALLOC_CALLS 500
+#define MAX_MALLOC_CALLS 10000
 
 static size_t total_bytes = 0;
 static void *pointers[MAX_MALLOC_CALLS];
@@ -14,7 +14,7 @@ void *_malloc(size_t size)
 
     if (malloc_calls == MAX_MALLOC_CALLS)
     {
-        printf("Increase MAX_MALLOC_CALLS!");
+        printf("Increase MAX_MALLOC_CALLS!\n");
         return NULL;
     }
 
@@ -40,4 +40,5 @@ void emancipation_proclamation()
 void print_malloced_mem()
     {
     printf("Total allocated memory: %zd\n", total_bytes);
+    printf("Total allocation calls: %d\n",  malloc_calls);
     }

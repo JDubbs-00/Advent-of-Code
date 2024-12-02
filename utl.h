@@ -133,6 +133,34 @@ bool is_in_ll_arr(long long int *arr, int size, long long int target)
     return false;
 }
 
+// All arrays values are decreasing?
+bool is_decreasing(int *arr, int size)
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        if (arr[i] <= arr[i + 1])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// All arrays values are increasing?
+bool is_increasing(int *arr, int size)
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        if (arr[i] >= arr[i + 1])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 // Count the number of occurences in a hash
 int count_hash(bool *arr, int size)
 {
@@ -249,6 +277,18 @@ int get_max(int *arr, int size)
         if (arr[i] > max) max = arr[i];
     }
     return max;
+}
+
+// Gets the differences between consecutive values in an array
+int *get_diffs(int *arr, int size)
+{
+    int *diffs = _malloc((size - 1) * sizeof(int));
+    for (int i = 0; i < size - 1; i++)
+    {
+        diffs[i] = arr[i] - arr[i + 1];
+    }
+
+    return diffs;
 }
 
 // Gets the index of the first occurence of a target int within an array

@@ -648,6 +648,16 @@ void print_2d_char_arr(char **arr, int rows, int cols)
     }
 }
 
+void print_bool_arr(bool *arr, int size)
+{
+    int i;
+    for (i = 0; i < size - 1; i++)
+    {
+        printf("%s, ", arr[i] ? "TRUE" : "FALSE");
+    }
+    printf("%s\n", arr[i] ? "TRUE" : "FALSE");
+}
+
 // Merges two int arrays, utility for sorting algorithm
 void merge(int *arr, int l, int m, int r)
 {

@@ -56,6 +56,19 @@ bool is_num(char c)
     return c >= ASCII_0 && c <= ASCII_9;
 }
 
+bool is_num_str(const char *s)
+{
+    int i;
+    for (i = 0; s[i] != '\0'; i++)
+    {
+        if (!is_num(s[i]))
+        {
+            return false;
+        }
+    }
+    return i != 0;
+}
+
 // Is uppercase character?
 bool is_uppercase(char c)
 {
@@ -187,7 +200,7 @@ int get_x_occurence(const char *s, char target, int x)
 }
 
 // Gets the indices of occurences of a character within a string
-int get_occurences(char *s, char target, int **arr, int max)
+int get_occurences(const char *s, char target, int **arr, int max)
 {
     int i;
     int c = 0;
@@ -197,6 +210,25 @@ int get_occurences(char *s, char target, int **arr, int max)
         if (s[i] == target)
         {
             //printf("%c found at index %d\n", target, i);
+            (*arr)[c++] = i;
+        }
+    }
+    return c;
+}
+
+// Gets the indices of occurences of a string within a string
+int get_occurences_str(const char *s, const char *target, int **arr, int max)
+{
+    int i;
+    char *substr;
+    int c = 0;
+    *arr = _malloc(max * sizeof(int));
+    for (i = 0; s[i] != '\0'; i++)
+    {
+        substr = strstr(&s[i], target);
+        if (substr)
+        {
+            i = i + (int)(substr - &s[i]);
             (*arr)[c++] = i;
         }
     }

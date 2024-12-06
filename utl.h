@@ -562,6 +562,16 @@ void shift_left(char *s, int index)
     }
 }
 
+// Inserts an int into an array
+void insert_into_arr(int *arr, int size, int index, int value)
+{
+        for (int i = size - 1; i >= index + 1; i--)
+        {
+            arr[i] = arr[i - 1];
+        }
+        arr[index] = value;
+}
+
 // Removes duplicate delimiters next to each other in a string
 void remove_extra_delimiters(char *s, char delimiter)
 {

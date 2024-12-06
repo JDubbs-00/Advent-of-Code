@@ -362,6 +362,18 @@ int search_ll(long long int *arr, int size, long long int target)
     return -1;
 }
 
+// Replaces a given character in a string
+void str_replace(char *s, char target, char new)
+{
+    for (int i = 0; s[i] != '\0'; i++)
+    {
+        if (s[i] == target)
+        {
+            s[i] = new;
+        }
+    }
+}
+
 // Copies a string
 void copy_str(char *from, char *to, int amount)
 {

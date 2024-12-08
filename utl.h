@@ -47,7 +47,8 @@ enum {
     DOWN,
     LEFT,
     RIGHT,
-    DIRECTION_ALL
+    DIRECTION_ALL,
+    DIRECTION_CNT = DIRECTION_ALL
 };
 
 // Is number?
@@ -626,7 +627,7 @@ long long int lcm(long long int a, long long int b)
 void print_time(clock_t start, clock_t end)
 {
     double total_time = end - start;
-    int ms = (int)(total_time);
+    int ms = (int)(total_time / CLOCKS_PER_SEC * 1000);
     int sec = ms / 1000;
     ms = ms % 1000;
     int min = sec / 60;

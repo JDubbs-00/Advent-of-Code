@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h> 
 
-#define MAX_MALLOC_CALLS 10000
+#define MAX_MALLOC_CALLS 20000
 
 static size_t total_bytes = 0;
 static void *pointers[MAX_MALLOC_CALLS];

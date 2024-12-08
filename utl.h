@@ -268,6 +268,17 @@ int count_occurences_int(int *arr, int size, int target)
     return c;
 }
 
+// Gets the sum of all values in an array
+int sum(int *arr, int size)
+{
+    int sum, i;
+    for (i = 0, sum = 0; i < size; i++)
+    {
+        sum += arr[i];
+    }
+    return sum;
+}
+
 // Gets the minimum large int value in an array
 long long int get_min_ll(long long int *arr, int size)
 {

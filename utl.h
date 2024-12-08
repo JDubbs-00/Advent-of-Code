@@ -514,6 +514,21 @@ int str_length(char *s)
     return c;
 }
 
+void int_to_str(int n, char *s)
+{
+    sprintf(s, "%d", n);
+}
+
+void ll_to_str(long long int n, char *s)
+{
+    sprintf(s, "%lld", n);
+}
+
+void concat_str(char *s1, char *s2)
+{
+    copy_str(s2, s1 + str_length(s1), str_length(s2));
+}
+
 // Splits a string to an array of ints given a delimiter
 int split_to_int(int *arr, int size, char *str, char delimiter)
 {

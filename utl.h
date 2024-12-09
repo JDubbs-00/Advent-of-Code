@@ -51,6 +51,13 @@ enum {
     DIRECTION_CNT = DIRECTION_ALL
 };
 
+typedef struct
+{
+    int x;
+    int y;
+} coordinates;
+
+
 // Is number?
 bool is_num(char c)
 {

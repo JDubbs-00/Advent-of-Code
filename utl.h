@@ -15,7 +15,6 @@
 #define ABS(n) ((n < 0) ? -(n) : n)
 #define MAX(n1, n2) ((n1 > n2) ? n1 : n2)
 #define MIN(n1, n2) ((n1 < n2) ? n1 : n2)
-#define CHAR_TO_NUM(c) (c - 48)
 
 #define ALPHABET_SIZE 26
 #define ASCII_UPPER_A 'A'
@@ -33,6 +32,8 @@
 #define HASH_UPPER_CHAR(c) (c - ASCII_UPPER_A)
 #define LOWER_CHAR_FROM_HASH(i) (i + ASCII_LOWER_A)
 #define UPPER_CHAR_FROM_HASH(i) (i + ASCII_UPPER_A)
+#define CHAR_TO_NUM(c) (c - ASCII_0)
+#define NUM_TO_CHAR(n) (n + ASCII_0)
 
 #define clear(p) memset((void *)(p), 0, sizeof *(p))
 
@@ -87,6 +88,18 @@ bool is_uppercase(char c)
 bool is_lowercase(char c)
 {
     return c >= ASCII_LOWER_A && c <= ASCII_LOWER_Z;
+}
+
+// Is even?
+bool is_even(int n)
+{
+    return n % 2 == 0;
+}
+
+// Is odd?
+bool is_odd(int n)
+{
+    return n % 2 == 1;
 }
 
 // Is string empty?

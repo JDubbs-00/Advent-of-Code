@@ -609,6 +609,15 @@ void shift_left(char *s, int index)
     }
 }
 
+// Shift left given an index into an int array
+void shift_left_arr(int *arr, int size, int index)
+{
+    for (int i = index; i < size; i++)
+    {
+        arr[i] = arr[i + 1];
+    }
+}
+
 // Inserts an int into an array
 void insert_into_arr(int *arr, int size, int index, int value)
 {

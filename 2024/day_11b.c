@@ -4,6 +4,8 @@
 #define REAL
 
 // GUESSES:
+// 128557190258 - low
+// 769742215740 - low
 
 typedef struct
 {
@@ -11,13 +13,13 @@ typedef struct
     long long int result;
 } history;
 
-#define MAX_BLINKS 25
-#define MAX_HIST_CNT 1000
+#define MAX_BLINKS 75
+#define MAX_HIST_CNT 10000
 
 history hist[MAX_BLINKS][MAX_HIST_CNT];
 int hist_cnt[MAX_BLINKS];
 
-int search(int blinks, long long int target)
+long long int search(int blinks, long long int target)
 {
     int i;
     history *h = hist[blinks];
@@ -33,7 +35,7 @@ int search(int blinks, long long int target)
     return -1;
 }
 
-void add_to_hist(int blinks, int start, int result)
+void add_to_hist(int blinks, long long int start, long long int result)
 {
     if (hist_cnt[blinks] == MAX_HIST_CNT)
     {
@@ -44,9 +46,10 @@ void add_to_hist(int blinks, int start, int result)
     hist_cnt[blinks]++;
 }
 
-int simulate(long long int n, int blinks)
+long long int simulate(long long int n, int blinks)
 {
-    int res, len;
+    long long int res;
+    int len;
     char num_as_str[MAX_DIGITS_LL];
 
     if (blinks == MAX_BLINKS)
@@ -71,7 +74,7 @@ int simulate(long long int n, int blinks)
     len = str_length(num_as_str);
     if (is_even(len))
     {
-        int num1, num2;
+        long long int num1, num2;
         int mid = len / 2;
 
         num2 = str_to_ll(num_as_str + mid, '\0');
@@ -97,8 +100,8 @@ int main(int argc, char *argv[])
     clock_t start = clock();
     FILE *fp;
     char *line = _malloc(MAX_LINE_LEN);
-    int res, i, size;
-    long long int *vals;
+    int i, size;
+    long long int *vals, res;
 
     #ifdef TEST
     fp = fopen("input/day_11_example_input.txt", "r");
@@ -135,5 +138,5 @@ int main(int argc, char *argv[])
     emancipation_proclamation();
     print_time(start, clock());
     print_malloced_mem();
-    printf("Stones after blinking %d times: %d\n", MAX_BLINKS, res);
+    printf("Stones after blinking %d times: %lld\n", MAX_BLINKS, res);
 }

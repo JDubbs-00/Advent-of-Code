@@ -15,7 +15,7 @@ void *_malloc(size_t size)
     if (malloc_calls == MAX_MALLOC_CALLS)
     {
         printf("Increase MAX_MALLOC_CALLS!\n");
-        return NULL;
+        exit(-1);
     }
 
     total_bytes += size;

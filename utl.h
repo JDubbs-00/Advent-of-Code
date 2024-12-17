@@ -34,6 +34,7 @@
 #define UPPER_CHAR_FROM_HASH(i) (i + ASCII_UPPER_A)
 #define CHAR_TO_NUM(c) (c - ASCII_0)
 #define NUM_TO_CHAR(n) (n + ASCII_0)
+#define ITER_STR(i, str) for (i = 0; str[i] != '\0'; i++)
 
 #define clear(p) memset((void *)(p), 0, sizeof *(p))
 
@@ -57,7 +58,6 @@ typedef struct
     int x;
     int y;
 } coordinates;
-
 
 // Is number?
 bool is_num(char c)

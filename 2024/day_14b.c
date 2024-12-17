@@ -76,8 +76,7 @@ int main(int argc, char *argv[])
                 grid[j][k] = '.';
             }
         }
-        printf("At %d seconds:\n", i);
-        
+
         clear_int_arr(y_cnts, height);
         clear_int_arr(x_cnts, width);
         for (j = 0; j < robots_cnt; j++)
@@ -94,6 +93,7 @@ int main(int argc, char *argv[])
 
         if (!skip)
         {
+            printf("At %d seconds:\n", i);
             for (j = 0; j < height; j++)
             {
                 printf("%s\n", grid[j]);

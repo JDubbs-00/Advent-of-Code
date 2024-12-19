@@ -472,6 +472,18 @@ char **init_2d_char(int cols, int rows)
     return arr;
 }
 
+// Initializes a 2D boolean array
+bool **init_2d_bool(int cols, int rows)
+{
+    int i;
+    bool **arr = _malloc(rows * sizeof(bool *));
+    for (i = 0; i < rows; i++)
+    {
+        arr[i] = _malloc(cols * sizeof(bool));
+    }
+    return arr;
+}
+
 // Hashes a string (e.g. A --> 0, E --> 5, etc.)
 void hash_str(char *s, int *hash)
 {
